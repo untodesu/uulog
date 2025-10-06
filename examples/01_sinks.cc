@@ -1,4 +1,4 @@
-#include <uulog/uulog.hh>
+#include <uulog.hh>
 
 #include <cassert>
 #include <filesystem>

@@ -5,7 +5,7 @@
             "name": "uulog",
             "cppStandard": "c++20",
             "includePath": [
-                "${workspaceFolder}",
+                "${workspaceFolder}/uulog",
                 "${default}"
             ]
         }

@@ -9,7 +9,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_library(uulog
     "${CMAKE_CURRENT_LIST_DIR}/uulog/uulog.hh"
     "${CMAKE_CURRENT_LIST_DIR}/uulog/uulog.cc")
-target_compile_definitions(uulog PRIVATE UULOG_DLLPRIVATE)
 target_compile_features(uulog PUBLIC cxx_std_20)
 target_include_directories(uulog PUBLIC "${CMAKE_CURRENT_LIST_DIR}/uulog")
 
@@ -22,8 +21,9 @@ if(MSVC AND MSVC_VERSION GREATER_EQUAL 1914)
     target_compile_options(uulog PUBLIC /Zc:__cplusplus)
 endif()
 
-if(NOT BUILD_SHARED_LIBS)
-    target_compile_definitions(uulog PUBLIC UULOG_STATIC)
+if(BUILD_SHARED_LIBS)
+    target_compile_definitions(uulog PUBLIC UULOG_DLL)
+    target_compile_definitions(uulog PRIVATE UULOG_DLLPRIVATE)
 endif()
 
 if(UULOG_EXAMPLES)

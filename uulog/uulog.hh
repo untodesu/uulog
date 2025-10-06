@@ -20,12 +20,12 @@
 #define UULOG_DLLIMPORT
 #endif
 
-#if defined(UULOG_STATIC)
-#define UULOG_API
-#elif defined(UULOG_DLLPRIVATE)
+#if defined(UULOG_DLL) && defined(UULOG_DLLPRIVATE)
 #define UULOG_API UULOG_DLLEXPORT
-#else
+#elif defined(UULOG_DLL)
 #define UULOG_API UULOG_DLLIMPORT
+#else
+#define UULOG_API
 #endif
 
 namespace uulog

@@ -1,4 +1,4 @@
-# uulog
+# uμLog
 A simple and maybe thread-safe logging library I use across a variety of my personal projects and some projects at work
 
 # How-to

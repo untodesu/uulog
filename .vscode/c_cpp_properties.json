@@ -1,0 +1,13 @@
+{
+    "version": 4,
+    "configurations": [
+        {
+            "name": "uulog",
+            "cppStandard": "c++20",
+            "includePath": [
+                "${workspaceFolder}",
+                "${default}"
+            ]
+        }
+    ]
+}

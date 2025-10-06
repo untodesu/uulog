@@ -3,7 +3,7 @@ A simple and maybe thread-safe logging library I use across a variety of my pers
 
 # HOWTO's
 ## Copy and forget
-- Get a C++20 compiler (or in case of MSVC, [make it behave](https://learn.microsoft.com/en-us/cpp/build/reference/zc-cplusplus))  
+- Get a C++20 compiler  
 - Copy the contents of `uulog` directory somewhere around your project and make sure your source code can include `uulog.hh`  
 - Include `uulog.hh` and register some pre-defined sinks or define and use your own  
 - Issue log messages: `LOG_DEBUG`, `LOG_INFO`, `LOG_WARNING`, `LOG_ERROR` and `LOG_CRITICAL`  

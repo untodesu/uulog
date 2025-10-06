@@ -2,7 +2,7 @@
 #define UULOG_HH
 #pragma once
 
-#if __cplusplus < 202002L
+#if __cplusplus < 202002L && !defined(_MSC_VER)
 #error "uulog requires C++20 or later"
 #endif
 

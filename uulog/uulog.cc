@@ -1,4 +1,4 @@
-#include <uulog/uulog.hh>
+#include "uulog.hh"
 
 #include <cassert>
 #include <filesystem>
@@ -137,13 +137,13 @@ UULOG_API const char* uulog::detail::level_string(Level level)
             return "info";
 
         case uulog::Level::Warning:
-            return "warn";
+            return "warning";
 
         case uulog::Level::Error:
             return "error";
 
         case uulog::Level::Critical:
-            return "crit";
+            return "critical";
 
         case uulog::Level::Debug:
             return "debug";

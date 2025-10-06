@@ -11,7 +11,7 @@ add_library(uulog
     "${CMAKE_CURRENT_LIST_DIR}/uulog/uulog.cc")
 target_compile_definitions(uulog PRIVATE UULOG_DLLPRIVATE)
 target_compile_features(uulog PUBLIC cxx_std_20)
-target_include_directories(uulog PUBLIC "${CMAKE_CURRENT_LIST_DIR}")
+target_include_directories(uulog PUBLIC "${CMAKE_CURRENT_LIST_DIR}/uulog")
 
 if(MSVC AND MSVC_VERSION GREATER_EQUAL 1914)
     # untodesu: I am not going to debate wheter it was a good idea on MSVC developers' side

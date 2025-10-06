@@ -12,15 +12,6 @@ add_library(uulog
 target_compile_features(uulog PUBLIC cxx_std_20)
 target_include_directories(uulog PUBLIC "${CMAKE_CURRENT_LIST_DIR}/uulog")
 
-if(MSVC AND MSVC_VERSION GREATER_EQUAL 1914)
-    # untodesu: I am not going to debate wheter it was a good idea on MSVC developers' side
-    # to do this mainly because it was definitely not a good idea; who in their righteous mind would
-    # fix a "C++20 compiler refuses to compile C++98 source" problem by... just forcing __cplusplus value
-    # to be equal to 199711L unless forced to behave like a normal compiler with an option?!
-    # https://learn.microsoft.com/en-us/cpp/build/reference/zc-cplusplus
-    target_compile_options(uulog PUBLIC /Zc:__cplusplus)
-endif()
-
 if(BUILD_SHARED_LIBS)
     target_compile_definitions(uulog PUBLIC UULOG_DLL)
     target_compile_definitions(uulog PRIVATE UULOG_DLLPRIVATE)

@@ -6,3 +6,4 @@ endfunction()
 
 add_example(00_hello)
 add_example(01_sinks)
+add_example(02_heresy)

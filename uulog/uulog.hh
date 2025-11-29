@@ -7,7 +7,14 @@
 #endif
 
 #include <cstddef>
+
+#ifdef UULOG_USE_FMTLIB
+#include <fmt/format.h>
+namespace uulog_fmt = fmt;
+#else
 #include <format>
+namespace uulog_fmt = std;
+#endif
 
 #if defined(_MSC_VER)
 #define UULOG_DLLEXPORT __declspec(dllexport)
@@ -89,20 +96,20 @@ UULOG_API void remove_sink(Sink sink);
 namespace uulog
 {
 template<typename... ArgsT>
-void info(const char* file, unsigned long line, std::format_string<ArgsT...> fmt, ArgsT&&... args);
+void info(const char* file, unsigned long line, uulog_fmt::format_string<ArgsT...> fmt, ArgsT&&... args);
 template<typename... ArgsT>
-void warning(const char* file, unsigned long line, std::format_string<ArgsT...> fmt, ArgsT&&... args);
+void warning(const char* file, unsigned long line, uulog_fmt::format_string<ArgsT...> fmt, ArgsT&&... args);
 template<typename... ArgsT>
-void error(const char* file, unsigned long line, std::format_string<ArgsT...> fmt, ArgsT&&... args);
+void error(const char* file, unsigned long line, uulog_fmt::format_string<ArgsT...> fmt, ArgsT&&... args);
 template<typename... ArgsT>
-void critical(const char* file, unsigned long line, std::format_string<ArgsT...> fmt, ArgsT&&... args);
+void critical(const char* file, unsigned long line, uulog_fmt::format_string<ArgsT...> fmt, ArgsT&&... args);
 } // namespace uulog
 
 namespace uulog
 {
 #ifndef NDEBUG
 template<typename... ArgsT>
-void debug(const char* file, unsigned long line, std::format_string<ArgsT...> fmt, ArgsT&&... args);
+void debug(const char* file, unsigned long line, uulog_fmt::format_string<ArgsT...> fmt, ArgsT&&... args);
 #endif
 } // namespace uulog
 
@@ -118,38 +125,38 @@ void debug(const char* file, unsigned long line, std::format_string<ArgsT...> fm
 #endif
 
 template<typename... ArgsT>
-void uulog::info(const char* file, unsigned long line, std::format_string<ArgsT...> fmt, ArgsT&&... args)
+void uulog::info(const char* file, unsigned long line, uulog_fmt::format_string<ArgsT...> fmt, ArgsT&&... args)
 {
-    auto message = std::vformat(fmt.get(), std::make_format_args(args...));
+    auto message = uulog_fmt::vformat(fmt.get(), uulog_fmt::make_format_args(args...));
     uulog::detail::info(file, line, message.data(), message.size());
 }
 
 template<typename... ArgsT>
-void uulog::warning(const char* file, unsigned long line, std::format_string<ArgsT...> fmt, ArgsT&&... args)
+void uulog::warning(const char* file, unsigned long line, uulog_fmt::format_string<ArgsT...> fmt, ArgsT&&... args)
 {
-    auto message = std::vformat(fmt.get(), std::make_format_args(args...));
+    auto message = uulog_fmt::vformat(fmt.get(), uulog_fmt::make_format_args(args...));
     uulog::detail::warning(file, line, message.data(), message.size());
 }
 
 template<typename... ArgsT>
-void uulog::error(const char* file, unsigned long line, std::format_string<ArgsT...> fmt, ArgsT&&... args)
+void uulog::error(const char* file, unsigned long line, uulog_fmt::format_string<ArgsT...> fmt, ArgsT&&... args)
 {
-    auto message = std::vformat(fmt.get(), std::make_format_args(args...));
+    auto message = uulog_fmt::vformat(fmt.get(), uulog_fmt::make_format_args(args...));
     uulog::detail::error(file, line, message.data(), message.size());
 }
 
 template<typename... ArgsT>
-void uulog::critical(const char* file, unsigned long line, std::format_string<ArgsT...> fmt, ArgsT&&... args)
+void uulog::critical(const char* file, unsigned long line, uulog_fmt::format_string<ArgsT...> fmt, ArgsT&&... args)
 {
-    auto message = std::vformat(fmt.get(), std::make_format_args(args...));
+    auto message = uulog_fmt::vformat(fmt.get(), uulog_fmt::make_format_args(args...));
     uulog::detail::critical(file, line, message.data(), message.size());
 }
 
 #ifndef NDEBUG
 template<typename... ArgsT>
-void uulog::debug(const char* file, unsigned long line, std::format_string<ArgsT...> fmt, ArgsT&&... args)
+void uulog::debug(const char* file, unsigned long line, uulog_fmt::format_string<ArgsT...> fmt, ArgsT&&... args)
 {
-    auto message = std::vformat(fmt.get(), std::make_format_args(args...));
+    auto message = uulog_fmt::vformat(fmt.get(), uulog_fmt::make_format_args(args...));
     uulog::detail::debug(file, line, message.data(), message.size());
 }
 #endif

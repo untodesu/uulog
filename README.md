@@ -3,18 +3,20 @@ A simple and maybe thread-safe logging library I use across a variety of my pers
 
 # HOWTO's
 ## Copy and forget
-- Get a C++20 compiler  
-- Copy the contents of `uulog` directory somewhere around your project and make sure your source code can include `uulog.hh`  
-- Include `uulog.hh` and register some pre-defined sinks or define and use your own  
-- Issue log messages: `LOG_DEBUG`, `LOG_INFO`, `LOG_WARNING`, `LOG_ERROR` and `LOG_CRITICAL`  
+- Get a C++20 compiler and a standard library that supports `std::format` (or fmtlib, see below);  
+- Copy the contents of `uulog` directory somewhere around your project and make sure your source code can include `uulog.hh`;  
+- Include `uulog.hh` and register some pre-defined sinks or define and use your own;  
+- Issue log messages: `LOG_DEBUG`, `LOG_INFO`, `LOG_WARNING`, `LOG_ERROR` and `LOG_CRITICAL`;  
+- If you want to use fmtlib (:nauseated_face:), define `UULOG_USE_FMTLIB` before including the header;  
 
 ## CMake: sub-directory
-- Clone the repository into your project and remove the sub-repo's `.git` folder  
-- Add an `add_subdirectory` call  
-- Optionally clean all the unnecessary stuff from both the source tree and CMakeLists.txt  
-- Add a dependency on `uulog` library somewhere  
-- Include `uulog.hh` and register some pre-defined sinks or define and use your own  
-- Issue log messages: `LOG_DEBUG`, `LOG_INFO`, `LOG_WARNING`, `LOG_ERROR` and `LOG_CRITICAL`  
+- Clone the repository into your project and remove the sub-repo's `.git` folder;  
+- Add an `add_subdirectory` call;  
+- Optionally clean all the unnecessary stuff from both the source tree and CMakeLists.txt;  
+- Add a dependency on `uulog` library somewhere;  
+- Include `uulog.hh` and register some pre-defined sinks or define and use your own;  
+- Issue log messages: `LOG_DEBUG`, `LOG_INFO`, `LOG_WARNING`, `LOG_ERROR` and `LOG_CRITICAL`;  
+- If you want to use fmtlib this way, tough luck. I can't be bothered with figuring out how to wrench my way into using it via `find_package`, besides managing dependencies by yourself is the way;  
 
 ## CMake: FetchContent
 ```
